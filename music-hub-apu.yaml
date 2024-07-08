@@ -1,0 +1,198 @@
+#YAML 1.0
+title: Music Hub API
+version: v1
+baseUri: http://localhost:3000/api
+
+/auth:
+  post:
+    description: Authenticate a user
+    body:
+      application/json:
+        type: object
+        properties:
+          email: string
+          password: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+            properties:
+              token: string
+
+/users:
+  post:
+    description: Create a new user
+    body:
+      application/json:
+        type: object
+        properties:
+          email: string
+          password: string
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+            properties:
+              message: string
+
+/albums:
+  get:
+    description: Get all albums
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: object
+  post:
+    description: Create a new album
+    body:
+      application/json:
+        type: object
+        properties:
+          title: string
+          artist: string
+          releaseDate: date
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+
+/albums/{id}:
+  get:
+    description: Get an album by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  put:
+    description: Update an album by ID
+    body:
+      application/json:
+        type: object
+        properties:
+          title: string
+          artist: string
+          releaseDate: date
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  delete:
+    description: Delete an album by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+/artists:
+  get:
+    description: Get all artists
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: object
+  post:
+    description: Create a new artist
+    body:
+      application/json:
+        type: object
+        properties:
+          name: string
+          genre: string
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+
+/artists/{id}:
+  get:
+    description: Get an artist by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  put:
+    description: Update an artist by ID
+    body:
+      application/json:
+        type: object
+        properties:
+          name: string
+          genre: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  delete:
+    description: Delete an artist by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+/playlists:
+  get:
+    description: Get all playlists
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: object
+  post:
+    description: Create a new playlist
+    body:
+      application/json:
+        type: object
+        properties:
+          name: string
+          tracks: array
+          items: string
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+
+/playlists/{id}:
+  get:
+    description: Get a playlist by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  put:
+    description: Update a playlist by ID
+    body:
+      application/json:
+        type: object
+        properties:
+          name: string
+          tracks: array
+          items: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+  delete:
+    description: Delete a playlist by ID
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
